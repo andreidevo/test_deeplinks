@@ -1,5 +1,3 @@
-
-
 class DeepLink{
   final String pathName;
 

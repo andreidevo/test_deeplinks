@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,7 +6,6 @@ import 'package:flutter_test_deeplinks/Screens/MainScreen/mainScreen.dart';
 import 'package:flutter_test_deeplinks/cubit/main_observable.dart';
 import 'package:uni_links/uni_links.dart';
 import 'package:flutter/services.dart' show PlatformException;
-
 import 'cubit/deeplink_cubit.dart';
 
 Future<void> initUniLinks() async {
@@ -22,10 +20,7 @@ Future<void> initUniLinks() async {
 
   sub = uriLinkStream.listen((Uri? uri) {
     deepLinkCubit.openNewUri(uri.toString());
-    print("ASDASDAD");
-  }, onError: (err) {
-    print("error");
-  });
+  }, onError: (err) {});
 }
 
 late StreamSubscription sub;
@@ -39,7 +34,6 @@ void main() {
     () => runApp(MyApp()),
     blocObserver: MyBlocObserver(),
   );
-
 }
 
 

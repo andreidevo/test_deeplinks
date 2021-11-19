@@ -1,11 +1,7 @@
-
-
 import 'package:flutter/material.dart';
-import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test_deeplinks/cubit/deeplink_cubit.dart';
 import 'package:flutter_test_deeplinks/cubit/deeplink_state.dart';
-
 
 class MainScreen extends StatelessWidget {
   @override
@@ -14,24 +10,27 @@ class MainScreen extends StatelessWidget {
       body: Container(
           color: Colors.white,
           child: BlocBuilder<DeepLinkCubit, DeepLinkState>(
-              builder: (context, state){
-                if (state is DeepLinkInitial){
-                  return Container(
-                    child: Center(
-                      child: Text("Waiting deepLink"),
-                    ),
-                  );
-                }
-                else if (state is DeepLinkNew){
-                  return Container(
-                    child: Center(
-                      child: Text(state.deepLink.pathName.toString(), textAlign: TextAlign.center,),
-                    ),
-                  );
-                }
-
-                return Container();
+            builder: (context, state){
+              if (state is DeepLinkInitial){
+                return Container(
+                  child: Center(
+                    child: Text("Waiting deepLink"),
+                  ),
+                );
               }
+              else if (state is DeepLinkNew){
+                return Container(
+                  child: Center(
+                    child: Text(
+                    state.deepLink.pathName.toString(),
+                    textAlign: TextAlign.center,
+                    ),
+                  ),
+                );
+              }
+
+              return Container();
+            }
           )
       ),
     );
